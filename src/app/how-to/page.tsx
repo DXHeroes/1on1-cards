@@ -1,6 +1,10 @@
-'use client';
-
 import Navigation from '../components/Navigation';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'How to Use 1:1 Meeting Cards | Guide',
+  description: 'Learn how to effectively use 1:1 Meeting Cards to lead better one-on-one conversations. Step-by-step guide to improve your team meetings.'
+};
 
 export default function HowTo() {
   return (

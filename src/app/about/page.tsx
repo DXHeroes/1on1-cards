@@ -1,7 +1,11 @@
-'use client';
-
 import Navigation from '../components/Navigation';
 import { FaLinkedin } from 'react-icons/fa';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About 1:1 Meeting Cards | Our Mission',
+  description: 'Learn about our mission to improve workplace relationships through meaningful 1:1 conversations. Discover how we help teams build stronger connections.'
+};
 
 export default function About() {
   return (

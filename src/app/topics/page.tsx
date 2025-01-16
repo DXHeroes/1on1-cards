@@ -1,5 +1,11 @@
 import Navigation from '../components/Navigation';
 import TopicsList from '../components/TopicsList';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Choose Your Topic | 1:1 Meeting Cards',
+  description: 'Explore our curated collection of conversation topics for 1:1 meetings. Find the perfect questions to lead meaningful discussions with your team.'
+};
 
 export default function Topics() {
   return (

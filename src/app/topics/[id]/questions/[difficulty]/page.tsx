@@ -1,6 +1,7 @@
 import QuestionsPage from './QuestionsPage';
 import { topics, difficulties, difficultyNames } from '../../../../constants/topics';
 import type { TopicId, Difficulty } from '../../../../constants/topics';
+import type { Metadata } from 'next';
 
 export const dynamic = 'force-static';
 
@@ -12,6 +13,29 @@ export function generateStaticParams() {
     }))
   );
 }
+
+type Props = {
+  params: { id: TopicId; difficulty: string }
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const topic = topics[params.id];
+    const difficultyName = params.difficulty === 'easy' ? 'Surface Level' : 
+                          params.difficulty === 'medium' ? 'Medium Depth' : 
+                          'Deep Questions';
+    
+    if (!topic) {
+      return {
+        title: 'Questions Not Found | 1:1 Meeting Cards',
+        description: 'The requested questions could not be found.'
+      };
+    }
+  
+    return {
+      title: `${difficultyName} Questions - ${topic.title} | 1:1 Meeting Cards`,
+      description: `${difficultyName} questions for ${topic.title.toLowerCase()} discussions in your 1:1 meetings. Guide meaningful conversations with carefully crafted questions.`
+    };
+  }
 
 export default async function Questions({ params }: { params: Promise<{ id: string; difficulty: string }> }) {
   const { id, difficulty } = await params;

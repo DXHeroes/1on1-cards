@@ -1,5 +1,11 @@
 import DxHeroesLogo from './components/DxHeroesLogo';
 import HomeCTA from './components/HomeCTA';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '1:1 Meeting Cards | Lead Better One-on-One Conversations',
+  description: 'Lead meaningful 1on1 conversations that strengthen your team and drive growth. A curated collection of conversation cards for better team management.'
+};
 
 export default function Home() {
   return (
