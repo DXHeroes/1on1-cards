@@ -67,11 +67,11 @@ export default function Home() {
 
         {/* CTA Button */}
         <div className="text-center">
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               type="button"
               onClick={() => router.push('/topics')}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-electric-violet to-purple text-white rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 text-xl font-staatliches group"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-electric-violet to-purple text-white rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 text-xl font-staatliches group justify-center"
             >
               Start Exploring
               <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -82,7 +82,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => router.push('/how-to')}
-              className="inline-flex items-center px-8 py-4 border-2 border-electric-violet text-electric-violet rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 text-xl font-staatliches group"
+              className="inline-flex items-center px-8 py-4 border-2 border-electric-violet text-electric-violet rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 text-xl font-staatliches group justify-center"
             >
               How To Use
               <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
