@@ -30,15 +30,12 @@ export default function Navigation({ showBack = true }: NavigationProps) {
               Topics
             </Link>
 
-            {showBack && (
-              <button
-                type="button"
-                onClick={() => router.back()}
-                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm sm:text-base font-inter"
-              >
-                Back
-              </button>
-            )}
+            <Link
+              href="/about"
+              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm sm:text-base font-inter"
+            >
+              About
+            </Link>
 
           </div>
           <Link href="https://dxheroes.io" target="_blank">
