@@ -5,9 +5,9 @@ import Navigation from '../../components/Navigation';
 import { difficulties } from '../../constants/topics';
 
 const difficultyColors = {
-  beginner: 'bg-electric-violet', // Pink for Surface Level
-  intermediate: 'bg-purple', // Gold for Medium Depth
-  advanced: 'bg-turquoise', // Turquoise for Deep Questions
+  beginner: 'bg-electric-violet',
+  intermediate: 'bg-purple',
+  advanced: 'bg-turquoise',
 } as const;
 
 export default function DifficultyPage(props: { id: string, title: string, description: string[] }) {
@@ -15,26 +15,41 @@ export default function DifficultyPage(props: { id: string, title: string, descr
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="mx-auto max-w-container px-4 py-12">
-        <h1 className="text-xl sm:text-2xl font-staatliches mb-6 text-center whitespace-pre-line">{title}</h1>
-        <div className="mb-8 space-y-4 text-base sm:text-lg font-inter text-center max-w-2xl mx-auto">
-          {description.map((paragraph, i) => (
-            <p key={`${id}-desc-${i}`} className="text-gray-700">
-              {paragraph}
-            </p>
-          ))}
+      <div className="max-w-5xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-3xl sm:text-5xl font-staatliches mb-6 bg-clip-text text-transparent bg-gradient-to-r from-electric-violet to-purple">
+            {title}
+          </h1>
+          <div className="text-lg text-gray-600 font-inter max-w-2xl mx-auto text-left">
+            {description.map((paragraph) => (
+              <p key={`${id}-desc-${paragraph.slice(0, 20)}`} className="mb-4 leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 max-w-2xl mx-auto gap-6">
+
+        {/* Difficulty Cards */}
+        <div className="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
           {difficulties.map((difficulty) => (
             <Link
               key={difficulty.level}
               href={`/topics/${id}/questions/${difficulty.level}`}
-              className={`${difficultyColors[difficulty.level]} text-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] text-left aspect-[2/1] flex flex-col justify-center`}
+              className={`${difficultyColors[difficulty.level]} group relative overflow-hidden text-white p-8 sm:p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] text-left border-2 border-transparent hover:border-white/20`}
             >
-              <h2 className="text-2xl font-staatliches mb-4">{difficulty.title}</h2>
-              <p className="text-white/90 text-lg leading-relaxed font-inter">
-                {difficulty.description}
-              </p>
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl sm:text-3xl font-staatliches">{difficulty.title}</h2>
+                  <span className="text-sm font-medium px-4 py-1 rounded-full bg-white/20 border border-white/40">
+                    {difficulty.level}
+                  </span>
+                </div>
+                <p className="text-lg sm:text-xl text-white/90 font-inter leading-relaxed">
+                  {difficulty.description}
+                </p>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
           ))}
         </div>

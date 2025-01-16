@@ -35,13 +35,6 @@ export default function QuestionsPage(props: { id: string, difficulty: Difficult
           <h1 className={`text-2xl sm:text-4xl font-staatliches mb-8 sm:mb-12 max-w-[80%] leading-tight whitespace-pre-line ${textColorClass}`}>
             {topic.title}
           </h1>
-          <div className="mb-8 sm:mb-12 space-y-4 font-inter text-gray-700">
-            {topic.description.map((paragraph, i) => (
-              <p key={`${id}-desc-${i}`} className="text-base sm:text-lg leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </div>
           <ul className="space-y-6 sm:space-y-8 font-inter">
             {questions.map((question, i) => (
               <li key={`${id}-${difficulty}-q-${i}`} className="flex items-start gap-3 sm:gap-4">

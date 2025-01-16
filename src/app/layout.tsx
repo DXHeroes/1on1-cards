@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Staatliches } from "next/font/google";
 import "./globals.css";
+import Navigation from "./components/Navigation";
 
 const inter = Inter({ subsets: ['latin'] });
 const staatliches = Staatliches({ weight: '400', subsets: ['latin'] });
@@ -17,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${staatliches.className} font-inter`}>{children}</body>
+      <body className={`${inter.className} ${staatliches.className} font-inter bg-athens-gray text-purple`}>
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }
