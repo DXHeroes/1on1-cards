@@ -31,6 +31,13 @@ export default function Navigation({ showBack = true }: NavigationProps) {
             </Link>
 
             <Link
+              href="/how-to"
+              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm sm:text-base font-inter"
+            >
+              How To
+            </Link>
+
+            <Link
               href="/about"
               className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm sm:text-base font-inter"
             >

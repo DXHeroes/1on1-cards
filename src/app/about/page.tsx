@@ -5,8 +5,8 @@ import { FaLinkedin } from 'react-icons/fa';
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-3xl mx-auto px-4 py-16">
+    <div className="min-h-screen">
+      <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-5xl font-staatliches mb-6 bg-clip-text text-transparent bg-gradient-to-r from-electric-violet to-purple">
             About This Project
