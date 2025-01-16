@@ -16,7 +16,7 @@ export default function Topics() {
             <button
               key={id}
               type="button"
-              onClick={() => router.push(`/topics/${id}/difficulty`)}
+              onClick={() => router.push(`/topics/${id}`)}
               className="bg-purple text-white p-6 sm:p-8 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] text-left aspect-square flex flex-col"
             >
               <h2 className="text-xl sm:text-2xl font-staatliches mb-4 sm:mb-6">{topic.title}</h2>
