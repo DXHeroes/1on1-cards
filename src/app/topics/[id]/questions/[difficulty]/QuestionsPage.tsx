@@ -32,7 +32,7 @@ export default function QuestionsPage(props: { id: string, difficulty: Difficult
           <span className={`absolute top-4 sm:top-8 right-4 sm:right-8 text-3xl sm:text-4xl font-staatliches opacity-90 sm:opacity-100 ${textColorClass}`}>
             {difficultyNumbers[difficulty]}
           </span>
-          <h1 className="text-2xl sm:text-4xl font-staatliches mb-8 sm:mb-12 max-w-[80%] leading-tight whitespace-pre-line">
+          <h1 className={`text-2xl sm:text-4xl font-staatliches mb-8 sm:mb-12 max-w-[80%] leading-tight whitespace-pre-line ${textColorClass}`}>
             {topic.title}
           </h1>
           <div className="mb-8 sm:mb-12 space-y-4 font-inter text-gray-700">
