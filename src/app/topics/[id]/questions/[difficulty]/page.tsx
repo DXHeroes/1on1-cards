@@ -13,13 +13,13 @@ export function generateStaticParams() {
   );
 }
 
-export default function Questions(props: { params: { id: string; difficulty: string } }) {
-  const topic = topics[props.params.id as TopicId];
-  const difficulty = props.params.difficulty as Difficulty;
+export default async function Questions({ params }: { params: Promise<{ id: string; difficulty: string }> }) {
+  const { id, difficulty } = await params;
+  const topic = topics[id as TopicId];
 
-  if (!topic || !difficultyNames[difficulty]) {
+  if (!topic || !difficultyNames[difficulty as Difficulty]) {
     return null;
   }
 
-  return <QuestionsPage id={props.params.id} difficulty={difficulty} questions={topic.questions[difficulty]} />;
+  return <QuestionsPage id={id} difficulty={difficulty as Difficulty} questions={topic.questions[difficulty as Difficulty]} />;
 } 

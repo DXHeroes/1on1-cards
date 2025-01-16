@@ -9,8 +9,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function Difficulty(props: { params: { id: string } }) {
-  const topic = topics[props.params.id as TopicId];
-
-  return <DifficultyPage id={props.params.id} title={topic.title} description={topic.description} />;
+export default async function Difficulty({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const topic = topics[id as TopicId];
+  
+  return <DifficultyPage id={id} title={topic.title} description={topic.description} />;
 } 

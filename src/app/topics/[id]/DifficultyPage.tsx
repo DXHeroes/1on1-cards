@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import Navigation from '../../components/Navigation';
-import { difficulties, topics } from '../../constants/topics';
-import type { TopicId } from '../../constants/topics';
+import { difficulties } from '../../constants/topics';
 
 const difficultyColors = {
   beginner: 'bg-electric-violet', // Pink for Surface Level
