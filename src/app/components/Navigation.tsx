@@ -1,25 +1,51 @@
 'use client';
 
 import Link from 'next/link';
-import DxHeroesLogo from './DxHeroesLogo';
+import { useRouter } from 'next/navigation';
+import DxHeroesLogo from '../components/DxHeroesLogo';
 
-export default function Navigation() {
+type NavigationProps = {
+  showBack?: boolean;
+};
+
+export default function Navigation({ showBack = true }: NavigationProps) {
+  const router = useRouter();
+
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-4">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-        <div className="flex items-center space-x-8">
-          <Link href="/" className="text-gray-600 hover:text-gray-900 font-inter">
-            Home
-          </Link>
-          <Link href="/topics" className="text-gray-600 hover:text-gray-900 font-inter">
-            Topics
-          </Link>
-          <Link href="/about" className="text-gray-600 hover:text-gray-900 font-inter">
-            About
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t">
+      <div className="mx-auto max-w-container px-4 py-4">
+        <div className="flex justify-between items-center">
+          <div className="flex gap-2">
+            <Link
+              href="/"
+              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm sm:text-base font-inter"
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/topics"
+              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm sm:text-base font-inter"
+            >
+              Topics
+            </Link>
+
+            {showBack && (
+              <button
+                type="button"
+                onClick={() => router.back()}
+                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors text-sm sm:text-base font-inter"
+              >
+                Back
+              </button>
+            )}
+
+          </div>
+          <Link href="https://dxheroes.io" target="_blank">
+            <DxHeroesLogo className="h-8 w-auto text-stratos" />
           </Link>
         </div>
-        <DxHeroesLogo className="w-32 h-8 text-stratos" />
       </div>
-    </nav>
+    </div>
   );
 } 

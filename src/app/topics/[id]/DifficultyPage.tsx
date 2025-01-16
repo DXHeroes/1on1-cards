@@ -4,10 +4,22 @@ import Link from 'next/link';
 import Navigation from '../../components/Navigation';
 import { difficulties } from '../../constants/topics';
 
-const difficultyColors = {
-  beginner: 'bg-electric-violet',
-  intermediate: 'bg-purple',
-  advanced: 'bg-turquoise',
+const difficultyBgColors = {
+  beginner: 'bg-electric-violet text-white',
+  intermediate: 'bg-purple text-white',
+  advanced: 'bg-turquoise text-purple',
+} as const;
+
+const difficultyTextColors = {
+  beginner: 'text-white',
+  intermediate: 'text-white',
+  advanced: 'text-purple',
+} as const;
+
+const difficultyBorderColors = {
+  beginner: 'border-white',
+  intermediate: 'border-white',
+  advanced: 'border-purple',
 } as const;
 
 export default function DifficultyPage(props: { id: string, title: string, description: string[] }) {
@@ -36,16 +48,16 @@ export default function DifficultyPage(props: { id: string, title: string, descr
             <Link
               key={difficulty.level}
               href={`/topics/${id}/questions/${difficulty.level}`}
-              className={`${difficultyColors[difficulty.level]} group relative overflow-hidden text-white p-8 sm:p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] text-left border-2 border-transparent hover:border-white/20`}
+              className={`${difficultyBgColors[difficulty.level]} ${difficultyTextColors[difficulty.level]} group relative overflow-hidden p-8 sm:p-10 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] text-left border-2 border-transparent hover:border-white/20`}
             >
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-2xl sm:text-3xl font-staatliches">{difficulty.title}</h2>
-                  <span className="text-sm font-medium px-4 py-1 rounded-full bg-white/20 border border-white/40">
+                  <span className={`text-sm font-medium px-4 py-1 rounded-full border ${difficultyBorderColors[difficulty.level]}`}>
                     {difficulty.level}
                   </span>
                 </div>
-                <p className="text-lg sm:text-xl text-white/90 font-inter leading-relaxed">
+                <p className={`text-lg sm:text-xl font-inter leading-relaxed ${difficultyTextColors[difficulty.level]}`}>
                   {difficulty.description}
                 </p>
               </div>
