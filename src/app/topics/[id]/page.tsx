@@ -3,8 +3,10 @@ import DifficultyPage from './DifficultyPage';
 import type { Metadata } from 'next';
 
 type Props = {
-  params: { id: TopicId }
+  params: Promise<{ id: TopicId }>
 };
+
+export const dynamic = 'force-static';
 
 export function generateStaticParams() {
   return Object.keys(topics).map((id) => ({
@@ -13,7 +15,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const topic = topics[params.id];
+  const { id } = await params;
+  const topic = topics[id];
   
   if (!topic) {
     return {
@@ -28,7 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Topic({ params }: Props) {
-  const topic = topics[params.id];
-  return <DifficultyPage id={params.id} title={topic.title} description={topic.description} />;
+export default async function Topic({ params }: Props) {
+  const { id } = await params;
+  const topic = topics[id];
+  return <DifficultyPage id={id} title={topic.title} description={topic.description} />;
 } 

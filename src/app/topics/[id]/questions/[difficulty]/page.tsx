@@ -15,13 +15,14 @@ export function generateStaticParams() {
 }
 
 type Props = {
-  params: { id: TopicId; difficulty: string }
+  params: Promise<{ id: TopicId; difficulty: string }>
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const topic = topics[params.id];
-    const difficultyName = params.difficulty === 'easy' ? 'Surface Level' : 
-                          params.difficulty === 'medium' ? 'Medium Depth' : 
+    const { id, difficulty } = await params;
+    const topic = topics[id];
+    const difficultyName = difficulty === 'easy' ? 'Surface Level' : 
+                          difficulty === 'medium' ? 'Medium Depth' : 
                           'Deep Questions';
     
     if (!topic) {
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-export default async function Questions({ params }: { params: Promise<{ id: string; difficulty: string }> }) {
+export default async function Questions({ params }: Props) {
   const { id, difficulty } = await params;
   const topic = topics[id as TopicId];
 
