@@ -7,7 +7,7 @@ import { HiExternalLink } from 'react-icons/hi';
 
 export default function Navigation() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t z-50">
       <div className="mx-auto max-w-container px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex gap-2 overflow-x-auto pb-2 -mb-2 scrollbar-hide">
