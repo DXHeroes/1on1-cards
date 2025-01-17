@@ -26,7 +26,7 @@ export default function DifficultyPage(props: { id: string, title: string, descr
   const { id, title, description } = props;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <div className="max-w-5xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">

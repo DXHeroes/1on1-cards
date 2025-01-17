@@ -26,7 +26,7 @@ export default function QuestionsPage(props: { id: string, difficulty: Difficult
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <div className="mx-auto max-w-2xl px-4 py-12">
         <div className="bg-white text-black p-6 sm:p-12 rounded-lg shadow-lg relative border-2 border-opacity-50">
           <span className={`absolute top-4 sm:top-8 right-4 sm:right-8 text-3xl sm:text-4xl font-staatliches opacity-90 sm:opacity-100 ${textColorClass}`}>
