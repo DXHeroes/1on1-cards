@@ -20,7 +20,7 @@ export default function About() {
         <div className="bg-white rounded-2xl shadow-lg p-8 sm:p-10">
           <div className="prose prose-lg mx-auto">
             <p className="text-lg text-gray-700 font-inter leading-relaxed mb-8">
-              I wanted to create something that would help me and people around me have better 1on1 meetings and a direction for our conversations, especially when someone feels lost or unsure of what to talk about.
+              We wanted to create something that would help us and people around us have better 1on1 meetings and a direction for our conversations, especially when someone feels lost or unsure of what to talk about.
             </p>
 
             <h2 className="text-2xl font-staatliches text-stratos mb-6">Special Thanks To:</h2>
