@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Staatliches } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ['latin'] });
 const staatliches = Staatliches({ weight: '400', subsets: ['latin'] });
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={`${inter.className} ${staatliches.className} font-inter bg-athens-gray text-purple pt-12 pb-24`}>
         <Navigation />
         {children}
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''} />
       </body>
     </html>
   );

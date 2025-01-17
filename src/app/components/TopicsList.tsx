@@ -13,14 +13,14 @@ export default function TopicsList() {
         <div key={id} className="relative group">
           <Link
             href={`/topics/${id}`}
-            className="w-full bg-purple text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 text-left flex flex-col justify-between min-h-[150px] border-2 border-transparent hover:border-white/20 group"
+            className="w-full bg-purple text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 text-left flex flex-col justify-between min-h-[150px] border-2 border-transparent hover:border-white/20 group hover:scale-[1.02] hover:-translate-y-1"
           >
-            <div>
+            <div className="relative">
               <h2 className="text-2xl font-staatliches text-white mb-2 pr-10">
                 {topic.title}
               </h2>
               <div
-                className="absolute top-6 sm:top-8 right-6 sm:right-8 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors border border-white/40"
+                className="absolute top-0 right-0 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-200 border border-white/40"
                 onMouseEnter={() => setHoveredTopic(id)}
                 onMouseLeave={() => setHoveredTopic(null)}
               >
@@ -30,11 +30,12 @@ export default function TopicsList() {
           </Link>
 
           <div 
-            className={`absolute z-10 w-80 p-5 bg-white rounded-xl shadow-xl top-full mt-2 right-0 text-left border-2 border-purple transition-all duration-200 origin-top-right ${
+            className={`absolute z-10 w-80 p-5 bg-white rounded-xl shadow-xl right-6 sm:right-8 text-left border-2 border-purple transition-all duration-200 origin-top-right ${
               hoveredTopic === id 
                 ? 'opacity-100 scale-100 translate-y-0' 
                 : 'opacity-0 scale-95 translate-y-2 pointer-events-none'
             }`}
+            style={{ top: '4rem' }}
           >
             <div className="space-y-3">
               {topic.description.map((paragraph) => (
