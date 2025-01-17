@@ -2,39 +2,10 @@
 
 import Link from 'next/link';
 import { topics } from '../constants/topics';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 export default function TopicsList() {
   const [hoveredTopic, setHoveredTopic] = useState<string | null>(null);
-  const tooltipRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-  const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
-
-  const setTooltipRef = (id: string) => (el: HTMLDivElement | null) => {
-    tooltipRefs.current[id] = el;
-  };
-
-  const setButtonRef = (id: string) => (el: HTMLButtonElement | null) => {
-    buttonRefs.current[id] = el;
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (hoveredTopic) {
-        const tooltip = tooltipRefs.current[hoveredTopic];
-        const button = buttonRefs.current[hoveredTopic];
-        if (tooltip && button && 
-            !tooltip.contains(event.target as Node) && 
-            !button.contains(event.target as Node)) {
-          setHoveredTopic(null);
-        }
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [hoveredTopic]);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -48,22 +19,17 @@ export default function TopicsList() {
               <h2 className="text-2xl font-staatliches text-white mb-2 pr-10">
                 {topic.title}
               </h2>
-              <button
-                ref={setButtonRef(id)}
-                type="button"
+              <div
                 className="absolute top-6 sm:top-8 right-6 sm:right-8 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors border border-white/40"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setHoveredTopic(hoveredTopic === id ? null : id);
-                }}
+                onMouseEnter={() => setHoveredTopic(id)}
+                onMouseLeave={() => setHoveredTopic(null)}
               >
                 <span className="text-white text-sm font-medium">?</span>
-              </button>
+              </div>
             </div>
           </Link>
 
           <div 
-            ref={setTooltipRef(id)}
             className={`absolute z-10 w-80 p-5 bg-white rounded-xl shadow-xl top-full mt-2 right-0 text-left border-2 border-purple transition-all duration-200 origin-top-right ${
               hoveredTopic === id 
                 ? 'opacity-100 scale-100 translate-y-0' 
