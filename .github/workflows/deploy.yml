@@ -72,8 +72,8 @@ jobs:
 
       - name: Build with Next.js
         run: pnpm next build
-      - name: Static HTML export with Next.js
-        run: pnpm next build
+        env:
+          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
