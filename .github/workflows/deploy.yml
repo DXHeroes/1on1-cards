@@ -42,7 +42,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9
+          version: 9.9.0
           run_install: false
       - name: Setup Pages
         uses: actions/configure-pages@v5
